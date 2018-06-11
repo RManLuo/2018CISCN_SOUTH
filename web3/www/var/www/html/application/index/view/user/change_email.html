@@ -1,0 +1,40 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-container fly-marginTop">
+    <div class="fly-panel fly-panel-user" pad20>
+        <div class="layui-tab layui-tab-brief" lay-filter="user">
+            <ul class="layui-tab-title">
+                <li class="layui-this">修改邮箱</li>
+            </ul>
+            <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-form layui-form-pane">
+                        <form method="post" action="/mail/change">
+                            {:token('_xsrf')}
+                            <div class="layui-form-item">
+                                <label for="L_pass" class="layui-form-label">新邮箱</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="L_pass" name="mail" required lay-verify="required" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <!--<div class="layui-form-item">-->
+                            <!--<h3>验证码 ( {$Think.session.question} )：</h3>-->
+
+                            <!--<canvas id="vtt_captcha" width="680" height="460" rel="{$Think.session.uuid}"></canvas>-->
+                            <!--<input type="hidden" id="captcha_x" name="captcha_x" value="">-->
+                            <!--<input type="hidden" id="captcha_y" name="captcha_y" value="">-->
+                            <!--{include file="captcha" /}-->
+
+                            <!--</div>-->
+                            <div class="layui-form-item">
+                                <button class="layui-btn" lay-filter="*" lay-submit>立即修改</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{/block}

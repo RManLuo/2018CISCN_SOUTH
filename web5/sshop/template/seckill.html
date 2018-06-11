@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="jumbotron">
+       <h1>秒杀活动</h1>
+        <form action="" method="post">
+            {% raw xsrf_form_html() %}
+            <div>输入秒杀商品编号：</div>
+            <div width="20px" style="margin: 10px;">
+                <input type="text" class="form-control" name="id" value="1">
+            </div>
+            <button class="btn btn-danger" type="submit">秒杀</button>
+        </form>
+    </div>
+{% end %}

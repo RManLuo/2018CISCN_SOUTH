@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>系统测试信息</title>
+</head>
+
+<div id="infodiv"></div>
+
+<script src="{{ static_url('js/jquery.min.js') }}"></script>
+<script>
+$.get('?info=data', '', function (data) {
+    $('#infodiv').append('<pre>' + data + '</pre>');
+})
+</script>
+
+</html>

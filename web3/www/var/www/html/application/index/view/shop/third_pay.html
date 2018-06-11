@@ -1,0 +1,13 @@
+{extend name="base" /}
+{block name="body"}
+{if condition="$Think.session.admin"}
+<div class="layui-container" style="padding: 10px">
+    <div class="alert alert-success alert-dismissable">
+        You get the ticket!
+    </div>
+</div>
+{/if}
+<div class="layui-container fly-marginTop">
+    <h1>第三方支付</h1>
+</div>
+{/block}

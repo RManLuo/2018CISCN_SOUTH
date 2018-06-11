@@ -1,0 +1,9 @@
+{extend name="base" /}
+{block name="body"}
+<div class="fly-home fly-panel jumbotron user-info">
+    <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="">
+    <h1>{$user.username}</h1>
+    <h2>邮箱地址：{$user.mail}</h2>
+    <h2>剩余积分：{$user.integral|floatval}</h2>
+</div>
+{/block}

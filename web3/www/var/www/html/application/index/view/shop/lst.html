@@ -1,0 +1,62 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-container commodity-list" style="padding: 20px">
+    <table class="layui-table" cellspacing="0" cellpadding="0" border="0">
+        <div class="layui-table-header">
+            <thead>
+            <tr>
+                <th data-field="id">
+                    <div class="layui-table-cell laytable-cell-1-id">
+                        <span>ID</span><span class="layui-inline"></span>
+                    </div>
+                </th>
+                <th data-field="name">
+                    <div class="layui-table-cell laytable-cell-1-name"><span>商品名称</span>
+                    </div>
+                </th>
+                <th data-field="price">
+                    <div class="layui-table-cell laytable-cell-1-price"><span>商品价格</span>
+                    </div>
+                </th>
+                <th data-field="3"><div class="layui-table-cell laytable-cell-1-3" align="center"><span>操作</span></div>
+                </th>
+            </tr>
+            </thead>
+        </div>
+
+        <div class="layui-table-body layui-table-main">
+            <!--<table class="layui-table" cellspacing="0" cellpadding="0" border="0">-->
+                <tbody>
+                {volist name="commoditys" id="commodity"}
+                    <tr data-index="{$commodity.id}" class="">
+                        <td data-field="id"><div class="layui-table-cell laytable-cell-1-id">{$commodity.id}</div></td>
+                        <td data-field="name"><div class="layui-table-cell laytable-cell-1-name"><a href="/info/{$commodity.id}">{$commodity.name}</a></div></td>
+                        <td data-field="price"><div class="layui-table-cell laytable-cell-1-price">{$commodity.price}</div></td>
+                        <td data-field="3" data-off="true" align="center">
+                            <div class="layui-table-cell laytable-cell-1-3">
+                                <a href="javascript:;" class="layui-btn layui-btn-primary layui-btn-xs" lay-event="shopcar" onclick="document.getElementById('{$commodity.name}-{$commodity.id}').submit();">加入购物车</a>
+                                <form action="/shopcar/add" method="post" id="{$commodity.name}-{$commodity.id}">
+                                    {:token('_xsrf')}
+                                    <input type="hidden" name="id" value="{$commodity.id}">
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                {/volist}
+                </tbody>
+        </div>
+    </table>
+    <div class="layui-box layui-layer-page layui-laypage-default">
+        {if condition="$preview-1 >= 0"}
+        <a href="/shop?page={$preview}" class="layui-laypage-prev ">上一页</a>
+        {else /}
+        <a href="/shop?page={$preview}" class="layui-laypage-prev layui-disabled">上一页</a>
+        {/if}
+        {if condition="count($commoditys) < $limit or !$next"}
+        <a href="/shop?page={$next}" class="layui-laypage-next layui-col-md-offset3 layui-disabled">下一页</a>
+        {else/}
+        <a href="/shop?page={$next}" class="layui-laypage-next layui-col-md-offset3">下一页</a>
+        {/if}
+    </div>
+</div>
+{/block}

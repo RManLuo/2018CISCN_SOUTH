@@ -1,0 +1,21 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-container fly-marginTop">
+    <h1>购物车</h1>
+
+    <div class="shopcar_list">
+        {if condition="isset($commodity)"}
+        <h3>{$commodity.name} / {$commodity.price}</h3>
+        <br>
+        <div class="layui-form layui-form-pane">
+            <form action="" method="post">
+                {:token('_xsrf')}
+                <input type="hidden" name="price" value="{$commodity.price}">
+                <button class="layui-btn" lay-filter="*" lay-submit>结算</button>
+            </form>
+        </div>
+        {/if}
+    </div>
+
+</div>
+{/block}
